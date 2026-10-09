@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>brainrot audit</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background: url('https://i.pinimg.com/736x/3a/d4/1d/3ad41dfa35add2279674d1ed87a20c26.jpg') no-repeat center center fixed; 
+            background-size: cover;
+            color: #222222;
+            font-family: Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 60px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+
+        .back-link {
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            font-size: 20px;
+            font-weight: 900;
+            color: #222222;
+            text-decoration: underline;
+        }
+        .back-link:hover { color: #ff5555; }
+
+        .box {
+            max-width: 550px;
+            width: 100%;
+            padding: 35px;
+            border: 3.5px solid #222222;
+            border-radius: 20px;
+            box-shadow: 8px 8px 0px #222222;
+            box-sizing: border-box;
+            background: #FEFCE8; /* soft butter yellow theme card */
+            min-height: 220px;
+        }
+
+        .btn {
+            background: white;
+            color: #222222;
+            border: 2.5px solid #222222;
+            padding: 18px;
+            font-size: 18px;
+            font-weight: 700;
+            border-radius: 12px;
+            width: 100%;
+            text-align: left;
+            margin-top: 14px;
+            cursor: pointer;
+            box-shadow: 3px 3px 0px #222222;
+            transition: all 0.1s ease;
+        }
+        .btn:hover { 
+            background: #fffcd6; 
+            transform: translate(-1px, -1px);
+            box-shadow: 4px 4px 0px #222222;
+        }
+
+        .meme-img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            border: 3.5px solid #222222;
+            border-radius: 12px;
+            margin: 20px auto;
+            display: block;
+            box-shadow: 4px 4px 0px #222222;
+        }
+
+        .verdict-box {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            border: 2.5px dashed #222222;
+            font-style: italic;
+            margin-top: 20px;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Back to main timeline map path button -->
+    <a href="index.html" class="back-link">← abort test</a>
+
+    <!-- Interactive quiz canvas box container card -->
+    <div class="box" id="quizDisplay"></div>
+
+        <script>
+        var questionsList = [
+            "complete the lyric: 'catch me if you can, bharkin on my tan...'",
+            "what language classification is 'susubamber, bambarbola, dagmadola'?",
+            "'itni raatko itni chota sa nikkar pehen kar aakhir kaha jaa raha tha amir khan ka beta_____'",
+            "finish the sentence: 'paisa ya pehechan?'",
+            "who went viral for saying 'frandssssss'?"
+        ];    
+
+        var choiceGrid = [
+            ["pavbhaji", "salvatore", "cellbhature", "ciao amore"], // Index 1 is cellbhature
+            ["ancient text log", "bambrolian lng", "js syntax bug", "English"], // Index 1 is bambrolian lng
+            ["junaid khan", "imran khan", "sara ali khan", "imran khan"], // Index 1 is junaid khan
+            ["pehenchan:money follows mah brother", "paisa", "pehechan", "paisan"], // Index 0 is pehenchan:money follows mah brother
+            ["salman khan", "modizi", "dolly chaiwala", "dhruvi"] // Index 3 is modizi
+        ];
+
+        var correctMap =  [2, 1, 0, 0, 1];
+        var trackingIndex = 0;
+        var userScore = 0;
+
+        function renderStep() {
+            var display = document.getElementById("quizDisplay");
+            if (!display) return;
+
+            if (trackingIndex < questionsList.length) {
+                var outputHtml = '<div style="font-size: 12px; color: #777; font-weight: bold; margin-bottom: 8px; text-transform: uppercase;">brainrot check: ' + (trackingIndex + 1) + ' / 5</div>';
+                outputHtml += '<div style="font-size: 20px; font-weight: bold; line-height: 1.4; color: #222;">' + questionsList[trackingIndex] + '</div>';
+
+                for (var i = 0; i < 4; i++) {
+                    outputHtml += '<button class="btn" onclick="captureChoice(' + i + ')">' + choiceGrid[trackingIndex][i] + '</button>';
+                }
+                display.innerHTML = outputHtml;
+            } else {
+                renderFinalDiagnosis();
+            }
+        }
+
+        function captureChoice(selectedNum) {
+            if (selectedNum == correctMap[trackingIndex]) { userScore++; }
+            trackingIndex++;
+            renderStep();
+        }
+
+        function renderFinalDiagnosis() {
+            var display = document.getElementById("quizDisplay");
+            var mainTitle = ""; var bodyCaption = ""; var memeUrl = "";
+
+            if (userScore == 5) {
+                mainTitle = "chronically unemployed finalboss";
+                bodyCaption = "you're def not alone on this vro";
+                memeUrl = "same.jpg.jpg";
+            } else if (userScore >= 3) {
+                mainTitle = "ball knower";
+                bodyCaption = "you have structural potential. let him cook.";
+                memeUrl = "ball.jpg";
+            } else if (userScore >= 1) {
+                mainTitle = "grass-toucher";
+                bodyCaption = "pls be more active in the community. you have potential.";
+                memeUrl = "grass.jpg";
+            } else {
+                mainTitle = "employed corporate unc";
+                bodyCaption = "who tf does not know these ball knowledge in this economy. pls seek help";
+                memeUrl = "5.jpg";        
+            }
+            
+            display.innerHTML = '<div style="font-size: 12px; color: #777; font-weight: bold; margin-bottom: 8px; text-transform: uppercase;">audit complete</div>' +
+                                '<div style="font-size: 24px; font-weight: 900; color: #ff4545; text-transform: lowercase;">' + mainTitle + '</div>' +
+                                '<p style="font-weight: bold; font-size: 16px; margin-top: 8px;">final audit metric: ' + userScore + ' / 5</p>' +
+                                '<img class="meme-img" src="' + memeUrl + '" alt="meme reaction">' +
+                                '<div class="verdict-box">"' + bodyCaption + '"</div>' +
+                                '<button class="btn" style="background: #e6fcd2; text-align: center; margin-top: 20px; font-weight: bold;" onclick="resetQuiz()">cook again</button>';
+        }
+
+        function resetQuiz() { trackingIndex = 0; userScore = 0; renderStep(); }
+        renderStep();
+    </script>
+
+        
+</html>

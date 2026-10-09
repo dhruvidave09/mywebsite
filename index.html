@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>my space. fr.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background: url('https://i.pinimg.com/736x/07/b3/96/07b3962da6c123e68d7a66db0a6ca038.jpg') no-repeat center center fixed; 
+            background-size: cover;
+            color: #222222;
+            font-family: Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 60px 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+
+        .top-right-link {
+            position: absolute;
+            top: 40px;
+            right: 60px;
+            font-size: 24px;
+            font-weight: 900;
+            color: #222222;
+            text-decoration: underline;
+            z-index: 10;
+        }
+        .top-right-link:hover { color: #2b1111; }
+
+        .profile-container {
+            max-width: 650px;
+            width: 100%;
+            text-align: center;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        .profile-pic {
+            width: 240px;
+            height: 240px;
+            border: 3.5px solid #222222;
+            border-radius: 0px; 
+            object-fit: cover;
+            margin: 25px auto;
+            display: block;
+            box-shadow: 6px 6px 0px #222222;
+        }
+
+        h1 { 
+            font-size: 48px; 
+            margin: 0; 
+            font-weight: 900; 
+            letter-spacing: -1.5px;
+        }
+
+        .main-punchline {
+            font-weight: bold; 
+            font-size: 22px; 
+            margin-top: 20px;
+            line-height: 1.4;
+        }
+
+        .sub-cta {
+            font-size: 15px; 
+            color: #444444; 
+            margin-top: 12px;
+            font-weight: 600;
+        }
+
+        .quiz-trigger-link {
+            display: inline-block;
+            margin-top: 35px;
+            font-size: 38px;
+            font-weight: 900;
+            color: #4b1e1e;
+            text-decoration: underline;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: transform 0.1s ease;
+        }
+        .quiz-trigger-link:hover {
+            color: #222222;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <a href="socials.html" class="top-right-link">socials</a>
+
+    <div class="profile-container">
+        <h1 style="text-transform: lowercase;">hiii gnggg!!!!!</h1>
+        
+        <img class="profile-pic" src="my-photo.jpg" alt="profile photo">
+
+        <p class="main-punchline">js a 17yo surviving coding shi with sum UNHEALTHY amount of caffeine</p>
+        <p class="sub-cta">go take the quiz below to check how umemployed you actually are!!!!!!!!!!!!!!!!!!!!!!!!!</p>
+        
+        <!-- QUIZ in all caps acting as a link to our new test page -->
+        <a href="quiz.html" class="quiz-trigger-link">QUIZ</a>
+    </div>
+
+</body>
+</html>
